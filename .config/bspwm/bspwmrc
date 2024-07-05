@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+#bspc monitor -d ${workspace[@]}
+bspc monitor -d $(cat ~/.config/bspwm/workspaces)
+
+bspc config border_width        3
+bspc config focused_border_color "#ADD8E6"
+bspc config window_gap          12
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a floorp desktop='web'
+bspc rule -a kitty desktop='term'
+bspc rule -a zoom desktop='others'
+#bspc rule -a kitty desktop='term'

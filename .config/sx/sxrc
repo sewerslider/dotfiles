@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+xwallpaper --zoom ~/img/.bg/archgirl1.jpg &
+picom -b
+exec i3
