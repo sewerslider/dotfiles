@@ -1,3 +1,0 @@
-exec_always --no-startup-id dunst
-exec_always --no-startup-id fcitx5
-exec_always --no-startup-id blueman-applet

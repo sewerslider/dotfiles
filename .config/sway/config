@@ -1,9 +1,0 @@
-output * bg ~/img/.bg/archgirl1.jpg fill
-output * scale 1.25
-
-tiling_drag titlebar
-
-gaps inner 10
-gaps outer 10
-
-include ./config.d/*
