@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgname=NAME
+pkgname=hvdotfiles
 pkgver=VERSION
 pkgrel=1
 epoch=
@@ -13,7 +13,114 @@ arch=()
 url=""
 license=('GPL')
 groups=()
-depends=()
+depends=(
+	'acpi'
+	'base'
+	'base-devel'
+	'blueman'
+	'brightnessctl'
+	'bspwm'
+	'chromium'
+	'dhcpcd'
+	'dunst'
+	'efibootmgr'
+	'emacs-nox'
+	'eza'
+	'fcitx5'
+	'fcitx5-bamboo'
+	'fcitx5-configtool'
+	'fcitx5-gtk'
+	'fcitx5-mozc'
+	'fcitx5-qt'
+	'firefox'
+	'fish'
+	'fzf'
+	'gimp'
+	'git'
+	'github-cli'
+	'grim'
+	'grub'
+	'hyprland'
+	'hyprlock'
+	'hyprpaper'
+	'iwd'
+	'just'
+	'keepassxc'
+	'kitty'
+	'lazygit'
+	'lf'
+	'linux'
+	'linux-firmware'
+	'linux-headers'
+	'lua-language-server'
+	'mako'
+	'man-db'
+	'mpv'
+	'nautilus'
+	'ncdu'
+	'neovim'
+	'networkmanager'
+	'noto-fonts'
+	'noto-fonts-cjk'
+	'noto-fonts-emoji'
+	'noto-fonts-extra'
+	'npm'
+	'ntfs-3g'
+	'otf-font-awesome'
+	'pacman-contrib'
+	'pamixer'
+	'pelican'
+	'php'
+	'picom'
+	'pikaur'
+	'pipewire'
+	'pipewire-alsa'
+	'pipewire-pulse'
+	'polybar'
+	
+	'qt5-wayland'
+	'rofi'
+	'slurp'
+	'steam'
+	'sx'
+	'sxhkd'
+	'trash-cli'
+
+	'vkd3d'
+	'wlroots'
+  'python-markdown'
+	'python-mdx-video'
+	'python-pip'
+	'python-pipx'
+	'python-poetry'
+
+	'typescript-language-server'
+	'vscode-css-languageserver'
+	'vscode-html-languageserver'
+	'vscode-json-languageserver'
+
+	
+	'waybar'
+	'wireplumber'
+	'wl-clipboard'
+	'wofi'
+	'xdg-desktop-portal'
+	'xdg-desktop-portal-hyprland'
+	'xorg'
+	'xwallpaper'
+	'zoom'
+	'zsh'
+
+	'wine'
+	'vulkan-intel'
+	'vulkan-mesa-layers'
+  'wine-gecko'
+  'wine-mono'
+
+	'ttf-go-nerd'
+  'newsboat'
+	'aria2'
+)
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -31,22 +138,31 @@ sha256sums=()
 validpgpkeys=()
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+	# use this function to test for other functions
+}
+
+grub_install() {
+	grub-install --efi-directory=/efi --target=x86_64-efi --bootloader-id=ARCH
+}
+
+systemd_service() {
+	systemctl enable NetworkManager
+	systemctl enable --user pipewire pipewire-pulse wireplumber
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+	git clone https://aur.archlinux.org/pikaur.git
+	cd pikaur
+	makepkg -sic
+	cd ..
+
+	grub_install
+	systemd_service
 }
 
 check() {
-	cd "$pkgname-$pkgver"
-	make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	pikaur -Syu $(pacman -Qqe)
 }
