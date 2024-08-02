@@ -2,4 +2,7 @@
 
 xwallpaper --zoom ~/img/.bg/archgirl1.jpg &
 picom -b
-exec i3
+sxhkd &
+polybar &
+xrdb -merge ~/.config/xorg/Xresources &
+exec bspwm

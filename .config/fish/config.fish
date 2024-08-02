@@ -10,7 +10,5 @@ if status is-login
     fish_add_path -m ~/.local/bin
 
     brightnessctl set 100%
-    
-end
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+end
