@@ -88,7 +88,7 @@ depends=(
 
 	'vkd3d'
 	'wlroots'
-  'python-markdown'
+  	'python-markdown'
 	'python-mdx-video'
 	'python-pip'
 	'python-pipx'
@@ -158,6 +158,7 @@ build() {
 
 	grub_install
 	systemd_service
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 }
 
 check() {
