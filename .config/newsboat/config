@@ -1,0 +1,2 @@
+macro i set pager "/usr/share/doc/newsboat/contrib/kitty-img-pager.sh"; open; set pager internal
+
