@@ -138,27 +138,35 @@ sha256sums=()
 validpgpkeys=()
 
 prepare() {
-	# use this function to test for other functions
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
 grub_install() {
-	grub-install --efi-directory=/efi --target=x86_64-efi --bootloader-id=ARCH
+    grub-install --efi-directory=/efi --target=x86_64-efi --bootloader-id=ARCH
 }
 
 systemd_service() {
-	systemctl enable NetworkManager
-	systemctl enable --user pipewire pipewire-pulse wireplumber
+    systemctl enable NetworkManager
+    systemctl enable --user pipewire pipewire-pulse wireplumber
+}
+
+theme() {
+    kitty +kitten themes --reload-in=all Rosé Pine Moon
+    fisher install rose-pine/fish
 }
 
 build() {
-	git clone https://aur.archlinux.org/pikaur.git
-	cd pikaur
-	makepkg -sic
-	cd ..
+    git clone https://aur.archlinux.org/pikaur.git
+    cd pikaur
+    makepkg -sic
+    cd ..
 
-	grub_install
-	systemd_service
-	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    grub_install
+    systemd_service
+    theme()
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 }
 
 check() {
