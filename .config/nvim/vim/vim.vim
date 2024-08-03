@@ -29,4 +29,4 @@ Plug 'rose-pine/neovim'
 
 call plug#end()
 
-colorscheme rose-pine-moon
+colorscheme rose-pine
