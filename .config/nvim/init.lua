@@ -1,4 +1,9 @@
-vim.cmd([[source ~/.config/nvim/vim/vim.vim]])
+function vim_f(vimscriptfile)
+    vimscriptdir = '~/.config/nvim/vim/'
+    vim.cmd('source' .. vimscriptdir .. vimscriptfile)
+end
+
+vim_f('vim.vim')
 
 local highlight = {
     "RainbowRed",

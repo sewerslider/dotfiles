@@ -25,5 +25,8 @@ call plug#begin()
 
 Plug 'tpope/vim-sensible'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'rose-pine/neovim'
 
 call plug#end()
+
+colorscheme rose-pine-moon
