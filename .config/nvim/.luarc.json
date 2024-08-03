@@ -1,0 +1,12 @@
+{
+  "workspace.library": ["/home/hv/dl"],
+  "runtime.version": "Lua 5.3",
+  "hint.enable": false
+}
+
+workspaceFolders = {
+    [1] = {
+        "name" = "vscode-lua",
+        "uri" = "file:///c%3A/Users/sumneko/.vscode-insiders/extensions/vscode-lua",
+    },
+},
