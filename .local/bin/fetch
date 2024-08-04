@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+clear
+fastfetch --kitty ~/.config/bg/yuri1.jpg
