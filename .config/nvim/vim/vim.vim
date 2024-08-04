@@ -24,6 +24,7 @@ set backspace=indent,eol,start
 call plug#begin()
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'rose-pine/neovim'
 
