@@ -23,6 +23,7 @@ depends=(
     'pipewire-pulse'
     'wireplumber'
     'hyprland'
+    'python'
 )
 makedepends=()
 checkdepends=()
