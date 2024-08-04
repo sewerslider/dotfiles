@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+query=$(apropos $1 | fzf -e)
+man_page=$(printf "$query" | cut -d
