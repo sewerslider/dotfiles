@@ -1,4 +1,21 @@
 #!/usr/bin/env bash
 
-query=$(apropos $1 | fzf -e)
-man_page=$(printf "$query" | cut -d
+function usage() {
+    printf "usage : help-search [STRING]"
+}
+
+function query() {
+    search_term=$(apropos "$1" | fzf -e)
+    if [[ $? -eq 1 ]]; then
+	usage
+    fi
+}
+
+function search() {
+    query "$1"
+    man_page=$(printf "%s" "$search_term" | cut -d ' ' -f 1)
+    page_index=$(printf "%s" "$search_term" | cut -d ' ' -f 2 | tr -d '()')
+    man "$page_index" "$man_page"
+}
+
+search "$@"
