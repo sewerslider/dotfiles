@@ -5,6 +5,8 @@ end
 
 vim_f('vim.vim')
 
+require 'keybind'
+
 local highlight = {
     "RainbowRed",
     "RainbowYellow",
