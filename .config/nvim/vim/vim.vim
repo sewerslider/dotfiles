@@ -23,10 +23,18 @@ set backspace=indent,eol,start
 
 call plug#begin()
 
+" vim plugins
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'mattn/emmet-vim'
+Plug 'SirVer/ultisnips'
+
+" lua plugins
 Plug 'rose-pine/neovim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v2.*', 'do': 'make install_jsregexp'} "
+
+" others
 
 call plug#end()
 
