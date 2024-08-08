@@ -1,4 +1,4 @@
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "'h", "a", { desc = "aaa" })
 map("i", "jk", "<ESC>")

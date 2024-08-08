@@ -1,4 +1,5 @@
 set number	
+set numberwidth=4
 set linebreak	
 set showbreak=+++ 	
 set textwidth=100	

@@ -1,11 +1,9 @@
-function vim_f(vimscriptfile)
-    vimscriptdir = '~/.config/nvim/vim/'
-    vim.cmd('source' .. vimscriptdir .. vimscriptfile)
-end
+require 'vi'
+require 'keybind'
 
 vim_f('vim.vim')
+vim_f('keybind.vim')
 
-require 'keybind'
 
 local highlight = {
     "RainbowRed",
