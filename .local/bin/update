@@ -1,5 +1,29 @@
 #!/usr/bin/env bash
 
-sudo pacman -Syu
-fish -c 'fisher update'
-nvim -c PlugUpdate
+function err() {
+    printf "\ncommand failed\n"
+}
+
+
+update_command=(
+"pikaur -Syu"
+"nvim -c PlugUpdate -c qa"
+)
+
+fish_command=(
+"fisher update"
+)
+
+for command in "${update_command[@]}"; do
+    if ! $command
+    then
+	err
+    fi
+done
+
+for command in "${fish_command[@]}"; do
+    if ! fish -c "$command"
+    then
+	err
+    fi
+done
